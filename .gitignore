@@ -1,5 +1,11 @@
-/target/
+bin
+out/
+build
+.classpath
+.project
+target
+*.log
 /logs/
-/.idea/
-/PooyaByte-1.0-SNAPSHOT.jar/
-/PooyaByte-1.0-SNAPSHOT.jar.original/
+.idea
+PooyaByte-1.0-SNAPSHOT.jar/
+PooyaByte-1.0-SNAPSHOT.jar.original/
