@@ -7,5 +7,6 @@ build
 PooyaByte-1.0-SNAPSHOT.jar/
 PooyaByte-1.0-SNAPSHOT.jar.original/
 /target/
+/target/classes/
 /logs/
 /.idea/

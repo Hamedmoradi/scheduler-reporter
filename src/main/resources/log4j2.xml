@@ -18,6 +18,9 @@
         <Logger name="org.springframework.boot" level="error" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
+        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="debug">
+            <AppenderRef ref="LogToConsole"/>
+        </logger>
         <Root level="error">
             <AppenderRef ref="LogToFile"/>
             <AppenderRef ref="LogToConsole"/>
