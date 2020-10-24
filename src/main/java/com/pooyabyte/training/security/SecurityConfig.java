@@ -3,6 +3,7 @@ package com.pooyabyte.training.security;
 import com.pooyabyte.training.audit.AuditorAwareImpl;
 import com.pooyabyte.training.exception.CustomAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,7 +57,9 @@ public void configure(HttpSecurity http) throws Exception {
 	http
 			.antMatcher("/**")
 			.authorizeRequests()
-			.anyRequest()
+			.requestMatchers(EndpointRequest.to("health", "flyway", "info"))
+			.permitAll()
+			.requestMatchers(EndpointRequest.toAnyEndpoint())
 			.hasRole("USER")
 			.anyRequest()
 			.fullyAuthenticated()
@@ -71,7 +74,8 @@ public void configure(HttpSecurity http) throws Exception {
 			.logoutSuccessUrl("/logout.jsp")
 			.and()
 			.csrf()
-			.disable();
+			.disable()
+			.httpBasic();
 	
 }
 
