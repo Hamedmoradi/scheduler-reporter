@@ -1,9 +1,3 @@
-bin
-out/
-build
-.classpath
-.project
-.idea
 PooyaByte-1.0-SNAPSHOT.jar/
 PooyaByte-1.0-SNAPSHOT.jar.original/
 /target/
