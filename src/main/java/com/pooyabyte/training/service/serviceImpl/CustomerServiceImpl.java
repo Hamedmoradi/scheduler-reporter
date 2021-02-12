@@ -5,6 +5,8 @@ import com.pooyabyte.training.dto.CustomerDto;
 import com.pooyabyte.training.repository.CustomerRepository;
 import com.pooyabyte.training.service.CustomerService;
 import com.pooyabyte.training.event.publisher.CustomEventPublisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImpl implements CustomerService, ApplicationEventPublisherAware {
 
+public static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
 @Autowired
 private CustomerRepository customerRepository;
 
@@ -49,9 +52,9 @@ public List<Optional<CustomerDto>> getAll() {
 @Transactional
 public Optional<CustomerDto> save(Customer customer) {
 	Customer savedCustomer = customerRepository.save(customer);
-	System.out.println("Publishing custom event.");
+	logger.info("Publishing custom event.");
 	publisher.publishEvent(savedCustomer);
-	customEventPublisher.publish("hiiiiiiiiiii",savedCustomer);;
+	customEventPublisher.publish("hiiiiiiiiiii",savedCustomer);
 	return CustomerDto.customerToCustomerDto(savedCustomer);
 }
 

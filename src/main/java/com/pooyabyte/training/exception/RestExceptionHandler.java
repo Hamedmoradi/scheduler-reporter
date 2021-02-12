@@ -15,31 +15,31 @@ import java.util.List;
 //@Slf4j
 public class RestExceptionHandler {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
+    private  static final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);
 
     @ExceptionHandler(value = CustomerRegisteredPreviouslyException.class)
     public ResponseEntity<Object> handleDuplicateCustomerException(CustomerRegisteredPreviouslyException exception) {
-        LOGGER.error(exception.getMessage(), exception);
+        logger.error(exception.getMessage(), exception);
         return new ResponseEntity<>("customer checked that duplicate national Code does not register again", HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(value = NotificationTypeNotSelectedException.class)
     public ResponseEntity<Object> handleSelectNotificationException(NotificationTypeNotSelectedException exception) {
-        LOGGER.error(exception.getMessage(), exception);
+        logger.error(exception.getMessage(), exception);
         return new ResponseEntity<>("any check box not selected....", HttpStatus.NOT_FOUND);
     }
 
 
     @ExceptionHandler(value = {PooyabyteBaseBusinessException.class})
     public ResponseEntity<List<ExceptionResponse>> handleBusinessEx(PooyabyteBaseBusinessException ex) {
-        LOGGER.error(ex.getMessage(), ex);
+        logger.error(ex.getMessage(), ex);
         return ResponseEntity.status(Integer.parseInt(ex.getMessage()))
                              .body(Arrays.asList(new ExceptionResponse(ex.getMessage())));
     }
 
     @ExceptionHandler(value = {Throwable.class})
     public ResponseEntity<List<ExceptionResponse>> handleError(Throwable ex) {
-        LOGGER.error(ex.getMessage(), ex);
+        logger.error(ex.getMessage(), ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                              .body(Arrays.asList(new ExceptionResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage())));
     }

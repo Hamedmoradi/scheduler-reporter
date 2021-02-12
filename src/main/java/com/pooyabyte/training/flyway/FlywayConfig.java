@@ -1,4 +1,4 @@
-package com.pooyabyte.training;
+package com.pooyabyte.training.flyway;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.Bean;

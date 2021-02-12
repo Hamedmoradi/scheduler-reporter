@@ -8,19 +8,12 @@ import java.util.Date;
 @Entity
 @DiscriminatorValue("sms_notification")
 public class SmsNotification extends Notification {
-
     @Id
     @GeneratedValue
     private Integer id;
-
     @Column(name = "phone_number",nullable = true)
     private String phoneNumber;
-
-
-    public SmsNotification(){};
-
-
-
+    
     public SmsNotification(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }

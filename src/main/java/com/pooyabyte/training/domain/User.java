@@ -5,8 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -14,20 +13,15 @@ public class User implements Serializable {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Integer id;
 @NotEmpty
-
-
 @Column(name = "username",nullable = false, unique = true,columnDefinition = "VARCHAR")
 private String username;
 @NotEmpty
 @Column(name = "password",columnDefinition = "VARCHAR")
 private String password;
-
 @Column(name = "enabled")
 private boolean enabled;
-
 @Column(name = "dateCreated")
 private Date dateCreated;
-
 @ManyToOne(fetch = FetchType.EAGER)
 @JoinColumn(name ="FK_Authority_Id",nullable = false)
 private Authority authorities ;

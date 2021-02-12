@@ -2,10 +2,8 @@ package com.pooyabyte.training.service.serviceImpl;
 
 import com.pooyabyte.training.domain.User;
 import com.pooyabyte.training.repository.UserRepository;
-import com.pooyabyte.training.event.publisher.CustomEventPublisher;
 import com.pooyabyte.training.util.UserPrincipalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

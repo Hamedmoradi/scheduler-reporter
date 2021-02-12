@@ -1,7 +1,6 @@
 package com.pooyabyte.training.event;
 
 import com.pooyabyte.training.domain.Customer;
-import com.pooyabyte.training.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 
@@ -26,7 +25,7 @@ public String getMessage() {
 public Customer getCustomer() {
 	return customer;
 }
-
+@Override
 public String toString() {
 	return "My Custom Event";
 }
